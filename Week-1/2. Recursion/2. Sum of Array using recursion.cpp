@@ -3,7 +3,6 @@
 //code : traversing the array from the end
 
 #include<iostream>
-#include "Solution.h"
 using namespace std;
 
 int sum(int input[], int n) {
