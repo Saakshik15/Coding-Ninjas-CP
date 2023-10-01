@@ -1,5 +1,34 @@
 //Problem :  Finding sum of array using recursion
 
+//code : traversing the array from the end
+
+#include<iostream>
+#include "Solution.h"
+using namespace std;
+
+int sum(int input[], int n) {
+
+    //base case
+  if(n==-1) return 0;
+    //recursive call
+  return input[n-1] + sum(input, n-1);
+}
+
+int main(){
+    int n;
+    cin >> n;
+  
+    int *input = new int[n];
+    
+    for(int i = 0; i < n; i++) cin >> input[i];
+    
+    cout << sum(input, n) << endl;
+}
+
+
+
+//code: traversing from the beginning
+
 #include <bits/stdc++.h>
 // #include<iostream>
 using namespace std;
