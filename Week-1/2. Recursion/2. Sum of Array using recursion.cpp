@@ -9,7 +9,7 @@ using namespace std;
 int sum(int input[], int n) {
 
     //base case
-  if(n==-1) return 0;
+  if(n==0) return 0;
     //recursive call
   return input[n-1] + sum(input, n-1);
 }
