@@ -4,6 +4,7 @@ using namespace std;
 int main(){
 
   //STL arrays
+  //STL arrays are static in nature and cannot change their size during runtime
   
   //initializing arrays:
   
