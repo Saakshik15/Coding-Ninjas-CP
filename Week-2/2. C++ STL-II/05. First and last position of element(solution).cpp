@@ -1,3 +1,5 @@
+//find the first and last position of the given element in a sorted array
+
 //code:
 
 #include <bits/stdc++.h>
