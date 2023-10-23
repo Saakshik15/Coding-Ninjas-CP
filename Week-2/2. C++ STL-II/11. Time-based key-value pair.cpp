@@ -65,7 +65,7 @@ So, we will apply lower_bound() over the whole hashmap for the timestamp we are 
 //time complexity: (logN)^2
 //space complexity: O(N)
 
-//solution code:
+//solution code (CP):
 
 #include <iostream>
 #include <bits/stdc++.h>
@@ -128,4 +128,24 @@ int main(){
     return 0;
 }
 
+//solution code (DSA):
+
+class TimeMap {
+public:
+        map<string, map<int, string, greater<int>>> mp;
+        TimeMap(){};
+    
+        void set(string key, string value, int timestamp) {
+            mp[key][timestamp] = value;
+        }
+        
+        string get(string key, int timestamp) {
+            if(mp.count(key) == 0) return "";
+
+            auto it = mp[key].lower_bound(timestamp);
+            if(it == mp[key].end()) return "";
+
+            return it -> second;
+        }
+};
 
