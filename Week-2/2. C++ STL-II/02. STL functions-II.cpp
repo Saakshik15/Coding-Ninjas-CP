@@ -27,6 +27,10 @@ int main(){
   //first position: if multiple occurances of the same element are found in the vector
   //position of number just greater than the number: if no occurance of the number is found in the vector
 
+  // NOTE:
+  // If we are applying lower_bound() on an increasing array, it gives us the value just greater than the element if not found.
+  // If we are applying it on an increasing array, we get the value less than or equal to the given element.
+
   int lowerBoundPointer = lower_bound(arr1.begin(), arr1.end(), 3);
   int lowerBoundIndex = lower_bound(arr1.begin(), arr1.end(), 3) - arr1.begin();
   cout << "Pointer to Lower bound is: " << lowerBoundPointer << " and the index of lower bound is : " << lowerBoundIndex << endl;
