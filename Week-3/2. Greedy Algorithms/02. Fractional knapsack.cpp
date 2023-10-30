@@ -1,4 +1,9 @@
 /*
+You are given weights and values of N items. You have to select and put these selected items in a knapsack of capacity W. 
+Select the items in such a way that selected items give the maximum total value possible with given capacity of the knapsack.
+*/
+
+/*
     Time Complexity : O(N * log(N))
     Space Complexity : O(1)
 
