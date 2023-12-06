@@ -4,7 +4,7 @@
 #define ll long long
 #define pb push_back
 #define fast_io ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-#define fr(i,a,b) for(int i=a; i<b; i++)
+#define fr(i,a,b) for(int i=a; i<=b; i++)
 #define loop(x,n) for(int x=0; x<n; ++x)
 #define mod 1000000007
 #define inf (1LL<<60)
@@ -12,16 +12,65 @@
 
 using namespace std;
 
-//base conditiom
-//finding the middle element
-//recursively calling mergeSort on both the halves
-//merging two sorted halves
-
 void precal(){
 
 }
 
+//FUNCTION FOR MERGING THE TWO ARRAYS
+void merge(vector<int>& a, int start, int mid, int end){
+  vector<int> left, right;
+  
+  // for(int i=start; i<=mid; i++) left.push_back(a[i]);
+  fr(i, start, mid) left.push_back(a[i]);
+  fr(i, mid+1, end) right.push_back(a[i]);
+
+  int n=left.size(), m= right.size();
+  int l=0, r=0, curr=start;
+
+  //merging the arrays according to the minimum element on both sides
+  while (l<n && r<m) {
+    if (left[l] < right[r]) {
+      a[curr] = left[l];
+      curr++; l++;
+    } else {
+      a[curr] = right[r];
+      curr++; r++;
+    }
+  }
+
+  //remaining elements from the left array
+  while(l<n){
+    a[curr] = left[l];
+    curr++; l++;
+  }
+
+  //remaining elements from the right array
+  while(r<m){
+    a[curr] = right[r];
+    curr++; r++;
+  }
+}
+
+//FUNCTION FOR MERGE SORT
+void mergeSort(vector<int>& a, int start, int end){
+  
+  //base condition
+  if(start>=end) return;
+  
+  //finding the middle element
+  int mid = (start+end)/2;
+  
+  //recursively calling mergeSort on both the halves
+  mergeSort(a, start, mid);
+  mergeSort(a, mid+1, end);
+  
+  //merging two sorted halves
+  merge(a, start, mid, end);
+}
+
+//CALLING FUNCTION FOR MERGE SORT
 void solve() {
+  
   //taking input
   int n;
   cin >>n;
@@ -32,7 +81,8 @@ void solve() {
   mergeSort(arr,0,n-1);
   
   //printing sorted array
-  for(auto i: arr) cout<<i<<"\n";
+  cout<<"\n";
+  for(auto i: arr) cout<<i<<" ";
 }
 
 int main(){
