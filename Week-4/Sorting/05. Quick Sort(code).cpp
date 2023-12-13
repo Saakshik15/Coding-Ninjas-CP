@@ -16,8 +16,46 @@ void precal(){
 
 }
 
-void solve() {
+int partition(vector<int>& a, int left, int right){
+  int pivot = left;
+  int end= a[right];
 
+  fr(i, left, right) {
+    if(a[i] <= end) {
+      swap(a[i], a[pivot]);
+      pivot++;
+    }
+  }
+  swap(a[pivot], a[right]);
+  return pivot;
+}
+
+void quickSort(vector<int>& a, int left, int right){
+  //base condition
+  if(left>=right) return;
+
+  //finding the pivot element
+  int pivot= partition(a, left, right);
+
+  //recursively calling quickSort on the 2 halves, not including the pivot element
+  quickSort(a, left, pivot-1);
+  quickSort(a, pivot+1, right);
+}
+
+void solve() {
+  //take the inputs
+  int n;
+  cin>>n;
+
+  vector<int> a(n);
+  loop(i,n) cin>>a[i];
+
+  //call the quickSort function
+  quickSort(a, 0, n-1);
+
+  //print the final sorted array
+  for(auto i:a) cout<<i<<" ";
+  cout<<"\n";
 }
 
 int main(){
