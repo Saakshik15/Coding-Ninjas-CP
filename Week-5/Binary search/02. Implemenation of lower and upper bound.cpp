@@ -1,17 +1,36 @@
 // pseudo-code for lower_bound()
 
 lower_bound(nums, target){
-  left= 0, right= nums.length-1;
+  left= 0, right= nums.length;
 
-  while(left<=right){
+  while(left<right){
     mid= left+(right-left)/2;
 
-    if(arr[mid]>=n) {
+    if(target<= arr[mid]) {
       ans=mid;
-      high=mid-1;
+      right=mid-1;
     }
     else
-      low=mid+1;
+      left=mid+1;
   }
+  if (left<nums.length && nums[left]<target) left++;
+  return left;
 }
+
+
+// pseudo-code for upper_bound()
+
+upper_bound(nums, target){
+  left=0, right= nums.length;
+
+  while(left<right){
+    mid= left+(right-left)/2;
+
+    if(target >= nums[mid]) left= mid+1;
+    else right= mid;
+  }
+  if( left < nums.length && nums[left]<=target) left++;
+  return left;
+}
+
 
