@@ -1,0 +1,5 @@
+Backtracking: 
+Backtracking is a technique that uses to find the solution step by step increasing value with time.
+It removes the solutions that doesn't give rise to the solution of the problem based on the constraints given to solve the problem.
+eg. : N-queen problem and maze solving problem.
+
