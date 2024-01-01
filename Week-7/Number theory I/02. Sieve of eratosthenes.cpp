@@ -83,3 +83,11 @@ int main() {
     }
     return 0;
 }
+
+
+//time complexity of sieve:
+//the overall time compexity, calculating the operations turns out to be lesser than O(N log(logN))
+//this can be calculated using properties of harmonic series and taylor's expansion.
+
+
+//
