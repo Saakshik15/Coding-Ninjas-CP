@@ -1,3 +1,4 @@
+/*
 Observation: 
 
 If a number n is a prime number, than the multiples of that prime number clearly cannot be prime numbers as they already have divisor.
@@ -36,7 +37,7 @@ so, int the first iteration,
 
   so, instead of running a loop for i from 2 till N, we will run a loop only from 2 to sqrt(N).
   Here, sqrt(50) is 7.07 something so we will run a loop from 2 to 7 only.
-
+*/
 
 //Implementation code:
 
@@ -57,7 +58,7 @@ void sieve() {
         if (prime[i] == true) {
     	      for (int j = i * i; j <= n; j += i) prime[j] = false;
         }
-		}
+    }
 }
 
 int main() {
@@ -73,13 +74,12 @@ int main() {
         cin >> m;
 							  
         if (m <= n){
-        	if(prime[m] == true)
-            	cout << m << " is a prime number\n";
-        	else
-            	cout << m << " is not a prime number\n";
-		}
-		else
-			cout<<"The number exceeds the limit\n";	
+	    if(prime[m] == true)
+		cout << m << " is a prime number\n";
+	    else
+		cout << m << " is not a prime number\n";
+	}else
+	  cout<<"The number exceeds the limit\n";	
     }
     return 0;
 }
