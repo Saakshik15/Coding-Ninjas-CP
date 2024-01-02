@@ -25,54 +25,57 @@ Step 3: The remaining numbers after crossing out the multiples of prime numbers 
 
 //IMPLEMENTATION CODE
 
-#include <bits/stdc++.h>
-using namespace std;
-
-//sieve for finding prime numbers -> sqrt(L) by normal sieve
-vector<int> sieve(int n){
-    
+vector<int> sieve(int n) {
     vector<int> primes;
-    bool arr[n+1];
+    bool arr[n + 1];
     
-    for(int i=1; i<=n; i++) arr[i] = true;
-    arr[1] =false;
+    for (int i = 0; i <= n; i++) 
+        arr[i] = true;
     
-    for(int i=1; i<=n; i++) {
-        if(arr[i]==true){
-            for(int j= i*i; j<=n; j+=i) arr[j]=false;
+    arr[0] = arr[1] = false;
+    
+    for (int i = 2; i * i <= n; i++) {
+        if (arr[i]) {
+            for (int j = i * i; j <= n; j += i) {
+                arr[j] = false;
+            }
         }
     }
-    for(int i=1; i<=n; i++){
-        if(arr[i] ==true) primes.push_back(i);
+    
+    for (int i = 2; i <= n; i++) {
+        if (arr[i]) 
+            primes.push_back(i);
     }
+    
     return primes;
 }
 
-int main(){
-    int L, R;
-    cin>>L>>R;
+void segSieve(){
+	int L, R;
+    cin >> L >> R;
     
-    //segmented sieve
-    bool arr[R-L+1];
-    for(int i=L; i<=R; i++) arr[i-L]=true;
+    bool arr[R - L + 1];
+    for (int i = 0; i <= R - L; i++) 
+        arr[i] = true;
     
-    //step 1
-    vector<int> primes= sieve(sqrt(R));
+    vector<int> primes = sieve(sqrt(R)); // Generating primes up to sqrt(R)
     
-    //step 2 
-    for(int p:primes){
-        int start= (L/p) *p;
-        if(start% p != 0) start+= p;
+    for (int p : primes) {
+        int start = (L / p) * p;
+        if (start < L)
+            start += p;
         
-        for(int j=start; j<=R; j+=p)
-            arr[j-L]=false;
+        for (int j = max(start, p * p); j <= R; j += p) {
+            arr[j - L] = false;
+        }
     }
     
-    //step 3
-    //printing primes between L to R
-    for(int i=L; i<=R; i++) {
-        if(arr[i-L]) cout<<i<<" ";
+    for (int i = L; i <= R; i++) {
+        if (i >= 2 && arr[i - L]) {
+            cout << i << " ";
+        }
     }
+    cout<<"\n";
 }
 
 
