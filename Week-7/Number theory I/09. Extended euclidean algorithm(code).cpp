@@ -25,7 +25,7 @@ int main(){
 
   g= extendedGCD(a, b, x, y);
 
-  if(c%g == 0) cout<< "x= " <<x<<" & y = " <<y<<"\n";
+  if(c%g == 0) cout<< "x= " <<x*c/g <<" & y = " <<y*c/g <<"\n";
   else cout<<"Solution of this LDE does not exist\n";
   
 }
