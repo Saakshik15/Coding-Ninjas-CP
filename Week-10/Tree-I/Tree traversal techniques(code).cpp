@@ -26,7 +26,7 @@ void bfs(int root){
 
   while(!q.empty()){
     
-    int u= q.front;
+    int u= q.front();
     cout<<u<<" ";
     q.pop();
 
@@ -40,6 +40,9 @@ void bfs(int root){
 }
 
 int main(){
+    
+    int n;
+    cin>>n;
 
   for(int i=0; i<n-1; i++){
     int u,v;
@@ -47,13 +50,11 @@ int main(){
 
     tree[u].push_back(v);
     tree[v].push_back(u);
-
+  }
     cout<<"DFS: " <<dfs<<"\n";
     dfs(1,0);
     cout<<"\n\n";
 
     cout<<"BFS: " <<bfs<<"\n";
-    bfs
-    
-  }
+    bfs(1);
 }
