@@ -1,3 +1,5 @@
+//Queries of nCr%mod in O(1) time complexity
+
 #include<bits/stdc++.h>
 #define ll long long int
 using namespace std;
