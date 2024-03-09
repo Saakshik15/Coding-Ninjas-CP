@@ -11,7 +11,7 @@ signed main() {
 	vector<int> g = {0,1,2,2,3,3,0,0,0,0,0,0};
 
 	int t;
-	cin>>t;
+	cin>>t;s
 	while(t--) {
 		int n;
 		cin>>n;
