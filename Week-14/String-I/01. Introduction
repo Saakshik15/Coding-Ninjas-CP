@@ -1,0 +1,17 @@
+Various string matching algorithms are:
+
+1. Brute force
+2. Robin Karp algorithm
+3. KMP algorithm
+4. Z-algorithm
+
+
+1. Brute force algorithm:
+  In the brute force way to match the strings, we can match the strings using simple sliding window technique to find if string 
+  p in present in string t.
+
+overall time complexity for the brute force way is O(n*m) where n, m are lengths of string and since for every string pattern
+we are finding the matching string in the text.
+
+Space complexity would be O(1) since no space is being used.
+
