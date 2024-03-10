@@ -25,3 +25,34 @@ Example case 2. There are only two ways Aahad can make the first move, after eac
 
 */
 
+#include<bits/stdc++.h>
+using namespace std;
+
+string winner(int n, int m) {
+    // If both dimensions are odd, Aahad wins
+    if (n % 2 == 1 && m % 2 == 1) {
+        return "Harshit";
+    }
+    
+    // If one dimension is even and the other is odd, Harshit wins
+    if ((n % 2 == 0 && m % 2 == 1) || (n % 2 == 1 && m % 2 == 0)) {
+        return  "Aahad";
+    }
+    
+    // Otherwise, if both dimensions are even, Harshit wins
+    return "Aahad";
+}
+
+int main() {
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        int n, m;
+        cin >> n >> m;
+        
+        cout << winner(n, m) << endl;
+    }
+    
+    return 0;
+}
