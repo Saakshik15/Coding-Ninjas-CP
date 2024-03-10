@@ -63,5 +63,9 @@ So, we will move on to next window and instead of calculating the sum each time 
 
   
   
+> Even using this hash function, we can still have collision, so the worst time complexity: O(n*m)
+  but, by using this has function, the chances of spurious hits is low.
+> If the value of rolling has becomes too large the value is taken mod, with a very large prime no, i.e., 10^9 + 7.
+
 
 
