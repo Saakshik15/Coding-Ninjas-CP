@@ -19,3 +19,7 @@ createLPS(pat)
       j= lps[j-1]
     if(pat[i] = pat[j]): j++
     lps[i] =j
+
+
+//time complexity: O(tn+ pn)
+//space complexity: O(pn)
