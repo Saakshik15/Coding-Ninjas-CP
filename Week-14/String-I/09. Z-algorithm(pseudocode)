@@ -1,0 +1,18 @@
+int CalZArray(string s):
+  int[] z
+
+  for(i=1, l=0, r=0; i<s.len; i++){
+
+    if(i<=r)
+      z[i] = min(r-i+1, z[i-l])
+
+    while(i+ z[i] < s.len and s[z[i]]= s[i+ z[i]])
+      z[i]++
+
+    if(i+ z[i]-1 > r) 
+      l= i, r= i+ z[i]- 1
+  
+    return z
+  }
+
+}
