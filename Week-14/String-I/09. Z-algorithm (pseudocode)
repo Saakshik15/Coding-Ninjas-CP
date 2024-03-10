@@ -1,3 +1,6 @@
+Pseudocode for calculating Z-array for Z-algorithm:
+
+
 int CalZArray(string s):
   int[] z
 
