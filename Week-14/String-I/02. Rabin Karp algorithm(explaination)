@@ -1,0 +1,67 @@
+Rabin karp algorithm:
+
+
+The basic idea of this algorithm is to make a single value to compare, but the question is how?
+
+So, the basic idea here is using the hash of the string, and the hash of the string is calculated using hash function.
+
+Here, we will hash the letters to numbers, like:
+
+a b c d e f g h i ..........z
+1 2 3 4 5 6 7 8 9 ..........26
+
+Now, given the strings
+Text = aabaabb
+pat = abb
+
+pat would convert to :
+a b b
+1+2+2 = 5
+
+We will now find a window having the sum of the pattern as 5 in the text string and then find out comparing the 
+string whose sum is same as pat string's sum to the pat string.
+
+Now, we observe that in the text string, the last window abb gives sum =5 and thus we will match it with our string pat
+to check the order of the letters and find out if is is pat.
+
+  
+Time and space complexity:
+
+Here, the avg time complexity of this algorithm is O(n-m+1)
+  consider this example case, text = aabaabb, pat = abb
+The worst case time complexity of this algorithm is O(n^2)
+  consider case: text = addabcd, pat= bcd where multiple windows are matching the sum of pat and hence we have to check for each match.
+
+
+
+To overcome this, more advanced hash function can be used in Rabin Karp algorithm, which is:
+
+Consider this example,
+
+text= ddbdba
+pat= dba
+
+Now, we will hash the letters in the same way as above, like
+a b c d e f g h i ..........z
+1 2 3 4 5 6 7 8 9 ..........26
+
+but, while finding out the sum of the letters in the string using hashing, we will multiply the digits with the 1st prime
+number after 26, that is 31. For the string pat= dba, sum will be like:
+
+d        b        a
+4*31^2 + 2*31^1 + 1*31^0 = 3907 
+(2,1,0 are indexes of letters in reverse order in pat and 4,2,1 are hash values of letters)
+
+When we find the sum of the first window in the text string like this:
+In ddbdba, ddb is first window and the sum is 4*31^2 + 4*31^1 + 4*31^0 = 3970 which does not match the sum.
+So, we will move on to next window and instead of calculating the sum each time which will increase the TC again,
+  while shifting the window from ddb --> dbd, we will subtract the value of the 0th indexed 'd' first from first window by:
+  3970- 4*31^2 ...... 'd' sum was 4*31^2 in the first window
+  Still, for the next two letters we need to have the powers 31^2 and 31^1 instead of 31^1 and 31^0 from the previous window.
+  So, we will just multiply them by 31,
+  (3970- 4*31^2) *31 and add the last mapped value to the sum, which is d= 4*31^0 = 4 since 31^0 = 1
+
+  
+  
+
+
