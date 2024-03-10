@@ -1,0 +1,21 @@
+Algo KMP(text, pattern)
+  tn = text.length, pn= pat.length
+  lps = createLPS(pat)
+  
+  i=0, j=0
+  while(i<tn)
+    if(text[i] = pat[i]): i++, j++
+    else:
+      if(j != 0): j= lps[j-1]
+      else: i++
+  if(j==pn): print pattern found
+
+createLPS(pat)
+  int pn = pat.length
+  int j=0
+  
+  for i=1 to pn:
+    while(j>0 and pat[i] != pat[j]) 
+      j= lps[j-1]
+    if(pat[i] = pat[j]): j++
+    lps[i] =j
