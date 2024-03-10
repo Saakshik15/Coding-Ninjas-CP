@@ -1,0 +1,52 @@
+KMP string matching algorithm:
+(Knuth Morris Pratt)
+
+KMP algorithm is used because it improves the worst case time complexity to O(n).
+Rabin Karp is easier to implement, but can give wrong answers in case of spurious hits, KMP is more stable no matter what input is.
+Also, if string size is small and do not have much repitition then Rabin Karp is preferred and for longer strings, KMP is preferred.
+
+
+For the KMP algorithm, we’ll be creating an array to store the LPS data of the pattern that we’re trying to search.
+
+Terminologies:
+
+  Proper prefix
+  A prefix of a string is a substring that occurs at the beginning of the string and a proper prefix is 
+  all prefixes that are not equal to the string itself
+  
+  String : “hello”
+  prefixes: “”, “h”, “he”, “hel”, “hell”, “hello”
+  proper prefixes: “”, “h”, “he”, “hel”, “hell”
+  
+  Proper suffix
+  A suffix of a string is a substring that occurs at the end of the string and a proper suffix 
+  is all suffixes that are not equal to the string itself
+  
+  String : “hello”
+  suffixes: “”, “o”, “lo”, “llo”, “ello”, “hello”
+  proper suffixes: “”, “o”, “lo”, “llo”, “ello”
+
+
+LPS is simply the name of the array that we’re trying to build where the value at an index ‘i’ indicates the length of the
+longest proper prefix which is also the same as the proper suffix for the string containing the first ‘i’ characters.
+
+Understanding the LPS array:
+
+If the pattern/string that we’re considering is “ a a c a a a a c ” then length of the LPS array would be 8.
+LPS[4] would store the length of the longest proper prefix which same as the proper suffix of the string 
+formed using the first 5 characters (“ a a c a a ”) of the pattern i.e from index 0 to index 4 .
+LPS[0] of any pattern is always 0 as a string of length 1 would just have “” and a proper prefix and suffix.
+
+
+Algorithm to compute LPS
+The intention of this algorithm is to compute the array in O(n) complexity by establishing a dependency on the already computed elements. 
+
+1. Initialize lps[0] to 0 and assume that our string or pattern is stored in a variable named P
+2. Maintain 2 pointers: len and index. len maintains the length of the longest prefix found so far and index is used to 
+  iterate over and compute all the elements of the lps array
+3. Initialize len to 0 and index to 1.
+4. If P[index] = P[len] . This means that that we found a new and longer prefix that matches the suffix, 
+  so P[index] = len (length of last prefix)+ 1
+5. If P[index] != P[len]. This means that for the string P[0..index], the length of the longest prefix must be lesser than len, 
+  so we try to find a lower value for len that might satisfy the prefix criteria. For now, let’s say that the next smaller 
+  possible value of len that could be a potential match would be P[len-1] if len > 0 otherwise P[index] = 0. 
