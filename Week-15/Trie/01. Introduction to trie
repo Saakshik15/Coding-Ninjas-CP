@@ -1,0 +1,21 @@
+What is Trie?
+  Trie is a type of k-ary search tree used for storing and searching a specific key from a set. 
+  Using Trie, search complexities can be brought to optimal limit (key length). 
+
+Definition: A trie (derived from retrieval) is a multiway tree data structure used for storing strings over an alphabet. 
+  It is used to store a large amount of strings. The pattern matching can be done efficiently using tries.
+
+Advantages of tries
+  1. In tries the keys are searched using common prefixes. Hence it is faster. The lookup of keys depends upon the height in case of binary search tree. 
+  2. Tries take less space when they contain a large number of short strings. As nodes are shared between the keys.
+  3. Tries help with longest prefix matching, when we want to find the key.
+
+Applications of tries
+  1. Tries has an ability to insert, delete or search for the entries. Hence they are used in building dictionaries such as entries for telephone numbers, English words.
+  2. Tries are also used in spell-checking softwares.
+
+Properties of the Trie for a set of the string:
+  1. The root node of the trie always represents the null node.
+  2. Each child of nodes is sorted alphabetically.
+  3. Each node can have a maximum of 26 children (A to Z).
+  4. Each node (except the root) can store one letter of the alphabet.
